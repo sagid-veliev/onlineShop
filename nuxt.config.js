@@ -56,6 +56,10 @@ export default {
       // to edit target browsers: use "browserslist" field in package.json
       "autoprefixer": {}
       }
-    }
+    },
+    transpile: [
+      ({ isDev, isLegacy }) => isDev && isLegacy && 'ansi-regex',
+      ({ isDev, isLegacy }) => isDev && isLegacy && 'strip-ansi'
+    ]
   },
 };

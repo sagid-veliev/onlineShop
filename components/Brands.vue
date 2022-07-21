@@ -4,7 +4,7 @@
             <h3>All Brands</h3>
         </div>
         <div class="container_brand_items">
-            <div v-for="item in brands" class="container_brand_items__item">{{item.title}}</div>
+            <div v-for="(item, index) in brands" :key="index" class="container_brand_items__item">{{item.title}}</div>
             <!-- <div class="container_brand_items__item">Brand 2</div>
             <div class="container_brand_items__item">Brand 3</div>
             <div class="container_brand_items__item">Brand 4</div>
@@ -43,13 +43,13 @@ export default {
         &_items {
             display: flex;
             flex-direction: column;
-            flex-basis: 100%;
+            /* flex-basis: 100%; */
             margin: 15px;
             &__item {
                 display: flex;
                 padding: 10px 0;
                 font-size: 18px;
-                flex-basis: content;
+                /* flex-basis: content; */
                 border-bottom: 1px solid rgba(0, 0, 0, 0.25);
                 &:hover {
                     background-color: rgb(250, 250, 250);
