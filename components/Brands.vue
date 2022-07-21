@@ -4,7 +4,7 @@
             <h3>All Brands</h3>
         </div>
         <div class="container_brand_items">
-            <div v-for="(item, index) in brands" :key="index" class="container_brand_items__item">{{item.title}}</div>
+            <div v-for="(item, index) in BRANDS" :key="index" class="container_brand_items__item">{{item.title}}</div>
             <!-- <div class="container_brand_items__item">Brand 2</div>
             <div class="container_brand_items__item">Brand 3</div>
             <div class="container_brand_items__item">Brand 4</div>
@@ -18,16 +18,22 @@
 </template>
 
 <script>
-import axios from 'axios';
+import {mapActions, mapGetters} from 'vuex';
 export default {
-    data() {
-        return {
-            brands: []
-        }
+    computed: {
+        ...mapGetters([
+            "BRANDS"
+        ])
     },
-    async mounted() {
-        this.brands = await axios.get('/brands.json').then(res => res.data);
-    }
+    methods: {
+        ...mapActions([
+            "GET_BRANDS"
+        ])   
+    },
+    mounted() {
+        this.GET_BRANDS();
+    },
+    
 }
 </script>
 
