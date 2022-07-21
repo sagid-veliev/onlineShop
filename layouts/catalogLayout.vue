@@ -27,7 +27,6 @@ export default {
         max-width: 1300px;
         margin: auto;
         &_nav {
-            /* flex-basis: 100%; */
             height: 70px;
         }
         &_content {
@@ -36,8 +35,7 @@ export default {
             margin-top: 25px;
             height: auto;
             &_brand {
-                flex: 0.2;
-                /* flex-basis: 100px; */
+                flex-basis: 20%;
             }
         }
     }
