@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import axios from 'axios';
+// import axios from 'axios';
 
 Vue.use(Vuex);
 
@@ -8,22 +8,14 @@ export default () => new Vuex.Store({
     state: {
         brands: []
     },
-    // mutations: {
-    //     SET_BRANDS: (state, brands) => {
-    //         state.brands = brands;
-    //     }
-    // },
+    mutations: {
+        SET_BRANDS: (state, brands) => {
+            state.brands = brands.data;
+        }
+    },
     actions: {
-        GET_BRANDS({state}) {
-            return axios.get('/brands.json')
-            .then(response => {
-                // commit('SET_BRANDS', response.data);
-                state.brands = response.data;
-            })
-            .catch((error) => {
-                console.log(error)
-                return error;
-            })
+        async GET_BRANDS({commit}) {
+            commit("SET_BRANDS", await this.$axios.get("http://localhost:3000/brands.json"));
         }
     },
     getters: {

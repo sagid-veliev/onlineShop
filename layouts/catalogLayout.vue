@@ -3,7 +3,7 @@
             <Navbar class="wrapper_nav" />
             <div class="wrapper_content">
                 <Brands class="wrapper_content_brand" />
-                <Nuxt class="wrapper_content_items"/>
+                <Nuxt class="wrapper_content_items" keep-alive/>
             </div>
         </div>
 </template>

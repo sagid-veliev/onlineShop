@@ -4,36 +4,20 @@
             <h3>All Brands</h3>
         </div>
         <div class="container_brand_items">
-            <div v-for="(item, index) in BRANDS" :key="index" class="container_brand_items__item">{{item.title}}</div>
-            <!-- <div class="container_brand_items__item">Brand 2</div>
-            <div class="container_brand_items__item">Brand 3</div>
-            <div class="container_brand_items__item">Brand 4</div>
-            <div class="container_brand_items__item">Brand 5</div>
-            <div class="container_brand_items__item">Brand 6</div>
-            <div class="container_brand_items__item">Brand 7</div>
-            <div class="container_brand_items__item">Brand 8</div>
-            <div class="container_brand_items__item">Brand 9</div> -->
+            <div v-for="(brand, index) in BRANDS" :key="index" class="container_brand_items__item">{{brand.title}}</div>
         </div>
     </div>
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex';
+import {mapGetters} from "vuex";
 export default {
-    computed: {
-        ...mapGetters([
-            "BRANDS"
-        ])
+    async fetch() {
+        await this.$store.dispatch("GET_BRANDS");
     },
-    methods: {
-        ...mapActions([
-            "GET_BRANDS"
-        ])   
-    },
-    mounted() {
-        this.GET_BRANDS();
-    },
-    
+    computed: mapGetters([
+        "BRANDS"
+    ])
 }
 </script>
 
