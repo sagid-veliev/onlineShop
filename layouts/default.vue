@@ -2,8 +2,7 @@
         <div class="wrapper">
             <Navbar class="wrapper_nav" />
             <div class="wrapper_content">
-                <Brands class="wrapper_content_brand" />
-                <Nuxt class="wrapper_content_items" keep-alive/>
+                <Nuxt keep-alive/>
             </div>
         </div>
 </template>
@@ -20,7 +19,7 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
     .wrapper {
         display: flex;
         flex-direction: column;
@@ -32,11 +31,9 @@ export default {
         &_content {
             display: flex;
             flex-direction: row;
+            justify-content: space-around;
             margin-top: 25px;
             height: auto;
-            &_brand {
-                flex-basis: 20%;
-            }
-        }
+        }  
     }
 </style>

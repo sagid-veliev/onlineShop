@@ -1,19 +1,14 @@
 <template>
-  <div>
-    
-  </div>
+    <Brands />
+    <Product />
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
-  layout: 'catalogLayout'
+  name: 'IndexPage'
 }
 </script>
 
 <style scoped>
-    * {
-      margin: 0;
-      padding: 0;
-    }
+    
 </style>

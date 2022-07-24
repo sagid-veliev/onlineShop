@@ -1,10 +1,13 @@
 <template>
     <div class="container_brand">
-        <div class="container_brand_header">
-            <h3>All Brands</h3>
-        </div>
-        <div class="container_brand_items">
-            <div v-for="(brand, index) in BRANDS" :key="index" class="container_brand_items__item">{{brand.title}}</div>
+        <!-- дополнительная вложенность под  IE (без неё ломаются стили фильтра брендов) -->
+        <div>
+            <div class="container_brand_header">
+                <h3>All Brands</h3>
+            </div>
+            <div class="container_brand_items">
+                <div v-for="(brand, index) in BRANDS" :key="index" class="container_brand_items__item">{{brand.title}}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -27,13 +30,15 @@ export default {
         flex-direction: column;
         border-radius: 5px;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0,0,0,0.22);
+        flex-basis: 20%;
         &_header {
             margin: 15px;
+            
         }
         &_items {
             display: flex;
             flex-direction: column;
-            /* flex-basis: 100%; */
+            flex-basis: 100%;
             margin: 15px;
             &__item {
                 display: flex;
