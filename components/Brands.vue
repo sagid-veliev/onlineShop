@@ -25,26 +25,27 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+    $flex: flex;
+    $flex-column: column;
     .container_brand {
-        display: flex;
-        flex-direction: column;
+        display: $flex;
+        flex-direction: $flex-column;
         border-radius: 5px;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0,0,0,0.22);
         flex-basis: 20%;
+        height: 100%;
         &_header {
             margin: 15px;
-            
         }
         &_items {
-            display: flex;
-            flex-direction: column;
+            display: $flex;
+            flex-direction: $flex-column;
             flex-basis: 100%;
             margin: 15px;
             &__item {
-                display: flex;
+                display: $flex;
                 padding: 10px 0;
                 font-size: 18px;
-                /* flex-basis: content; */
                 border-bottom: 1px solid rgba(0, 0, 0, 0.25);
                 &:hover {
                     background-color: rgb(250, 250, 250);

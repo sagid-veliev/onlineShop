@@ -53,7 +53,7 @@ export default {
       plugins: {
       "postcss-import": {},
       "postcss-nested": {},
-      // to edit target browsers: use "browserslist" field in package.json
+      "postcss-simple-vars": {},
       "autoprefixer": {}
       }
     },
