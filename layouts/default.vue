@@ -24,6 +24,7 @@ export default {
         flex-direction: column;
         max-width: 1400px;
         margin: auto;
+        font-family: "Oxygen";
         &_nav {
             height: 70px;
         }

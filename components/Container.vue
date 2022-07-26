@@ -21,7 +21,7 @@ export default {
     .container_carts {
         display: flex;
         flex-direction: column;
-        
+        margin: -5px;
         flex-basis: 80%;
         height: auto;
         &_header {

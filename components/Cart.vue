@@ -7,9 +7,11 @@
                 src="~/assets/images/1.png"
             />
         </div>
-        <div class="cart_name">Product 1</div>
-        <div class="cart_brand">Brand 1</div>
-        <div class="cart_price">73.32 $</div>
+        <div class="cart_description">
+            <div class="cart_description_name">Product 1</div>
+            <div class="cart_description_brand">Brand 1</div>
+            <div class="cart_description_price">73.32 $</div>
+        </div>
     </div>
 </template>
 <script>
@@ -29,7 +31,7 @@ export default {
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0,0,0,0.22);
         &_photo {
             height: 70%;
-            border: 1px solid black;
+            margin: 20px;
             position: relative;
             overflow: hidden;
             &_image {
@@ -43,8 +45,28 @@ export default {
                 margin: auto;
             }
         }
-        &:hover {
-            cursor: pointer;
+        &_description {
+            height: 30%;
+            margin: 10px;
+            &_name {
+                display: flex;
+                font-weight: 600;
+                height: 25%;
+            }
+            &_brand {
+                height: 25%;
+            }
+            &_price {
+                display:flex;
+                align-items: flex-end;
+                height: 50%;
+                font-weight: bold;
+                font-size: 22px;
+                color: rgb(235, 115, 3);
+            }
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 </style>
