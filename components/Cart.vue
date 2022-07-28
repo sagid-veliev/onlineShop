@@ -8,30 +8,45 @@
             />
         </div>
         <div class="cart_description">
-            <div class="cart_description_name">Product 1</div>
-            <div class="cart_description_brand">Brand 1</div>
-            <div class="cart_description_price">73.32 $</div>
+            <div class="cart_description_wrap">
+                <div class="cart_description_wrap_name">
+                    <p>{{ name }}</p>
+                </div>
+                <div class="cart_description_wrap_brand">
+                    <p>{{ brand }}</p>
+                </div>
+                <div class="cart_description_wrap_price">
+                    <p>{{ `${fixedPrice} ${currency}` }}</p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-    
+    props: {
+        name: String,
+        brand: String,
+        price: Number,
+        currency: String
+    },
+    computed: {
+        fixedPrice() {
+            return this.price.toFixed(2);
+        }
+    }
 }
 </script>
 <style lang="postcss">
     .cart {
         display: flex;
         flex-direction: column;
-        box-sizing: border-box;
-        width: 25%;
-        height: 350px;
-        margin: 5px;
-        border-radius: 5px;
+        width: 23%;
+        height: 100%;
+        margin: 1%;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0,0,0,0.22);
         &_photo {
             height: 70%;
-            margin: 20px;
             position: relative;
             overflow: hidden;
             &_image {
@@ -46,27 +61,50 @@ export default {
             }
         }
         &_description {
+            background-color: rgb(250, 250, 250);
             height: 30%;
-            margin: 10px;
-            &_name {
-                display: flex;
-                font-weight: 600;
-                height: 25%;
+            &_wrap {
+                margin: 10px;
+                &_name {
+                    display: flex;
+                    font-weight: 550;
+                    min-height: 25%;
+                    & p:hover {
+                        color: rgb(235, 115, 3);
+                    }
+                }
+                &_brand {
+                    min-height: 25%;
+                    opacity: 0.7;
+                }
+                &_price {
+                    display:flex;
+                    align-items: flex-end;
+                    height: 50%;
+                    font-weight: bold;
+                    font-size: 22px;
+                    color: rgb(235, 115, 3);
+                }
             }
-            &_brand {
-                height: 25%;
-            }
-            &_price {
-                display:flex;
-                align-items: flex-end;
-                height: 50%;
-                font-weight: bold;
-                font-size: 22px;
-                color: rgb(235, 115, 3);
-            }
-            &:hover {
-                cursor: pointer;
-            }
+        }
+    }
+
+    @media screen and (max-width: 1280px) { 
+        .cart {
+            width: 31.3%;
+        }
+    }
+
+    @media screen and (max-width: 1024px) { 
+        .cart {
+            width: 48%;
+        }
+    }
+
+     @media screen and (max-width: 640px) { 
+        .cart {
+            width: 80%;
+            justify-content: center;
         }
     }
 </style>

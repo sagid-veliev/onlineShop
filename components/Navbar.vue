@@ -3,7 +3,7 @@
             <div class="navbar_wrap">
                 <div class="navbar_logo">
                     <nuxt-img
-                        alt="Astrio"
+                        alt="Logo"
                         src="~/assets/images/logo.png"
                         sizes="md:18vw lg:15vw xl:12vw xxl:8vw"
                     />
