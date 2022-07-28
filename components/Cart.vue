@@ -28,7 +28,8 @@ export default {
         name: String,
         brand: String,
         price: Number,
-        currency: String
+        currency: String,
+        path: String
     },
     computed: {
         fixedPrice() {
@@ -42,11 +43,12 @@ export default {
         display: flex;
         flex-direction: column;
         width: 23%;
-        height: 100%;
+        min-height: 350px;
+        border-radius: 5px 5px 5px 5px;
         margin: 1%;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0,0,0,0.22);
         &_photo {
-            height: 70%;
+            height: 100%;
             position: relative;
             overflow: hidden;
             &_image {
@@ -67,7 +69,7 @@ export default {
                 margin: 10px;
                 &_name {
                     display: flex;
-                    font-weight: 550;
+                    font-weight: 600;
                     min-height: 25%;
                     & p:hover {
                         color: rgb(235, 115, 3);

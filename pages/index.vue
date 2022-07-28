@@ -1,17 +1,13 @@
 <template>
   <div class="content">
     <Brands class="content_filter"/>
-    <Container>
-      saddadasdasd
-    </Container>
+    <Container></Container>
   </div>
 </template>
 
 <script>
-import Container from '../components/Container.vue';
 export default {
     name: "IndexPage",
-    components: { Container }
 }
 </script>
 

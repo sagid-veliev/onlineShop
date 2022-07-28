@@ -4,13 +4,14 @@
             <h1>Catalog</h1>
         </div>
         <div class="container_carts_items">
+            <slot class="oleg"></slot>
             <Cart 
-                v-for="(item, index) in PRODUCTS"
+                v-for="(product, index) in PRODUCTS"
                 :key="index"
-                :name="item.title"
-                :brand="`Brand ${item.brand}`"
-                :price="item.regular_price.value"
-                :currency="item.regular_price.currency"
+                :name="product.title"
+                :brand="product.brand"
+                :price="product.regular_price.value"
+                :currency="product.regular_price.currency"
             />
         </div>
     </div>
@@ -43,7 +44,6 @@ export default {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-
         }
     }
 </style>

@@ -6,21 +6,28 @@
                 <h3>All Brands</h3>
             </div>
             <div class="container_brand_items">
-                <div v-for="(brand, index) in BRANDS" :key="index" class="container_brand_items__item">{{brand.title}}</div>
+                <div @click="selectBrand(brand)" v-for="(brand, index) in BRANDS" :key="index" class="container_brand_items__item">{{brand.title}}</div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 export default {
     async fetch() {
         await this.$store.dispatch("GET_BRANDS");
     },
     computed: mapGetters([
         "BRANDS"
-    ])
+    ]),
+        
+    methods: {
+        selectBrand(brand) {
+            this.$emit('select-brand', brand);
+        }
+    }
+    
 }
 </script>
 
@@ -53,6 +60,11 @@ export default {
                     cursor: pointer;
                 }
             }
+        }
+        &_selected {
+            background-color: rgb(250, 250, 250) !important;
+            color: rgb(248, 129, 18) !important;
+            cursor: pointer !important;
         }
     }
 </style>

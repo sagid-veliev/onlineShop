@@ -9,7 +9,7 @@
       "value": 27.12
     },
     "image": "/images/1.png",
-    "brand": 9
+    "brand": "Brand 9"
   },
   {
     "type": "configurable",
@@ -134,7 +134,7 @@
         }
       }
     ],
-    "brand": 1
+    "brand": "Brand 1"
   },
   {
     "type": "simple",
@@ -146,7 +146,7 @@
       "value": 36.87
     },
     "image": "/images/2.png",
-    "brand": 8
+    "brand": "Brand 8"
   },
   {
     "type": "simple",
@@ -158,7 +158,7 @@
       "value": 28.91
     },
     "image": "/images/3.png",
-    "brand": 2
+    "brand": "Brans 2"
   },
   {
     "type": "simple",
@@ -170,7 +170,7 @@
       "value": 41.23
     },
     "image": "/images/4.png",
-    "brand": 7
+    "brand": "Brand 7"
   },
   {
     "type": "simple",
@@ -182,7 +182,7 @@
       "value": 88.00
     },
     "image": "/images/5.png",
-    "brand": 3
+    "brand": "Brand 3"
   },
   {
     "type": "simple",
@@ -194,7 +194,7 @@
       "value": 127.41
     },
     "image": "/images/6.png",
-    "brand": 6
+    "brand": "Brand 6"
   },
   {
     "type": "configurable",
@@ -319,7 +319,7 @@
         }
       }
     ],
-    "brand": 4
+    "brand": "Brand 4"
   },
   {
     "type": "simple",
@@ -331,7 +331,7 @@
       "value": 123.40
     },
     "image": "/images/7.png",
-    "brand": 5
+    "brand": "Brand 5"
   },
   {
     "type": "configurable",
@@ -456,7 +456,7 @@
         }
       }
     ],
-    "brand": 3
+    "brand": "Brand 3"
   },
   {
     "type": "simple",
@@ -468,7 +468,7 @@
       "value": 92.32
     },
     "image": "/images/8.png",
-    "brand": 1
+    "brand": "Brand 1"
   },
   {
     "type": "simple",
@@ -480,6 +480,6 @@
       "value": 53.40
     },
     "image": "/images/9.png",
-    "brand": 2
+    "brand": "Brand 2"
   }
 ]

@@ -3,14 +3,14 @@
             <div class="navbar_wrap">
                 <div class="navbar_logo">
                     <nuxt-img
-                        alt="Logo"
+                        alt="Astrio"
                         src="~/assets/images/logo.png"
                         sizes="md:18vw lg:15vw xl:12vw xxl:8vw"
                     />
                 </div>
                 <div class="navbar_basket">
                     <nuxt-img
-                        alt="Astrio"
+                        alt="Basket"
                         src="~/assets/images/basket.png"
                         sizes="md:7vw lg:4vw xl:3vw xxl:2vw"
                     />
