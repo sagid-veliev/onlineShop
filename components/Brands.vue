@@ -21,13 +21,11 @@ export default {
     computed: mapGetters([
         "BRANDS"
     ]),
-        
     methods: {
         selectBrand(brand) {
-            this.$emit('select-brand', brand);
+            this.$emit('select', brand);
         }
     }
-    
 }
 </script>
 
