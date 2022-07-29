@@ -63,7 +63,7 @@ export default {
             }
         }
         &_description {
-            background-color: rgb(250, 250, 250);
+            background-color: rgb(248, 248, 248);
             height: 30%;
             &_wrap {
                 margin: 10px;

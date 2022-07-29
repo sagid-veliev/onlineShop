@@ -6,7 +6,10 @@
                 <h3>All Brands</h3>
             </div>
             <div class="container_brand_items">
-                <div @click="selectBrand(brand)" v-for="(brand, index) in BRANDS" :key="index" class="container_brand_items__item">{{brand.title}}</div>
+                <div @click="selectBrand(brand.title)" v-for="(brand, index) in BRANDS" :key="index" class="container_brand_items__item">{{brand.title}}</div>
+            </div>
+            <div class="container_brand_button">
+                <div @click="resetBrand(null)" class="container_brand_button_btn">Reset</div>
             </div>
         </div>
     </div>
@@ -24,6 +27,9 @@ export default {
     methods: {
         selectBrand(brand) {
             this.$emit('select', brand);
+        },
+        resetBrand(brand) {
+            this.$emit('reset', brand); 
         }
     }
 }
@@ -59,10 +65,25 @@ export default {
                 }
             }
         }
-        &_selected {
-            background-color: rgb(250, 250, 250) !important;
-            color: rgb(248, 129, 18) !important;
-            cursor: pointer !important;
+        &_button {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 35px;
+            margin: 15px;
+            &_btn {
+                border: 1px solid rgba(0, 0, 0, 0.25);
+                font-size: 22px;
+                border-radius: 5px;
+                padding: 10px;
+                transition: 0.2s;
+                &:hover {
+                    background-color: rgb(235, 115, 3);
+                    border: 1px solid rgba(0, 0, 0, 0);
+                    color: white;
+                    cursor: pointer;
+                }
+            }
         }
     }
 </style>

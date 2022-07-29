@@ -9,12 +9,14 @@
 import Navbar from '@/components/Navbar.vue';
 import Brands from '@/components/Brands.vue';
 import Container from '@/components/Container.vue';
+import Cart from '@/components/Cart.vue';
 
 export default {
     components: {
-    "Navbar": Navbar,
-    "Brands": Brands,
-    "Container": Container
+        "Navbar": Navbar,
+        "Brands": Brands,
+        "Container": Container,
+        "Cart": Cart
     }
 }
 </script>
@@ -24,11 +26,8 @@ export default {
         display: flex;
         flex-direction: column;
         max-width: 1400px;
-        margin: auto;
-        font-family: "Oxygen";
         &_nav {
             height: 70px;
         }
-       
     }
 </style>

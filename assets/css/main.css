@@ -4,7 +4,8 @@
 }
 
 .wrapper {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Oxygen";
   width: 100%;
   min-height: 100vh;
+  margin: auto;
 }

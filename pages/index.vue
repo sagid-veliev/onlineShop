@@ -1,10 +1,10 @@
 <template>
   <div class="content">
-    <Brands @select="selectBrand" class="content_filter" />
+    <Brands @select="selectBrand" @reset="resetBrands" class="content_filter" />
     <Container>
       <template v-slot:products>
         <Cart 
-            v-for="(product, index) in PRODUCTS"
+            v-for="(product, index) in filteredProducts"
             :key="index"
             :name="product.title"
             :brand="product.brand"
@@ -17,26 +17,37 @@
 </template>
 
 <script>
-import Cart from '../components/Cart.vue';
-import {mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 export default {
     name: "IndexPage",
-    components: { Cart },
-    data() {
+      data() {
       return {
-        products: this.PRODUCTS
+        sortedProducts: []
       }
     },
     async fetch() {
         await this.$store.dispatch("GET_PRODUCTS");
     },
-    computed: mapGetters([
-        "PRODUCTS"
-    ]),
-    methods: {
-        selectBrand(value) {
-            console.log();
+    computed: {
+      ...mapGetters([
+        "PRODUCTS"  
+      ]),
+      filteredProducts() {
+        if(!this.sortedProducts.length) {
+          return this.PRODUCTS;
         }
+        return this.sortedProducts;
+      }
+    },
+    methods: {
+      selectBrand(brand) {
+        this.sortedProducts = [];
+        this.sortedProducts = this.PRODUCTS.filter(item => item.brand === brand);
+        return this.sortedProducts;
+      },
+      resetBrands(brand) {
+        this.selectBrand(brand);
+      }
     }
 }
 
@@ -46,9 +57,7 @@ export default {
     .content {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
       border-radius: 5px;
-
       margin-top: 25px;
       height: auto;
       &_filter {
