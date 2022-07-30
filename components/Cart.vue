@@ -17,6 +17,7 @@
                 </div>
                 <div class="cart_description_wrap_price">
                     <p>{{ `${fixedPrice} ${currency}` }}</p>
+                    <button class="cart_description_wrap_price_btn">Buy</button>
                 </div>
             </div>
         </div>
@@ -81,11 +82,25 @@ export default {
                 }
                 &_price {
                     display:flex;
-                    align-items: flex-end;
-                    height: 50%;
+                    justify-content: space-between;
+                    align-items: center;
+                    min-height: 25%;
                     font-weight: bold;
                     font-size: 22px;
                     color: rgb(235, 115, 3);
+                    &_btn {
+                        border: rgb(235, 115, 3);
+                        background-color: rgb(248, 129, 18);
+                        font-size: 16px;
+                        border-radius: 5px;
+                        padding: 5px 10px;
+                        color: white;
+                        transition: 0.2s;
+                        &:hover {
+                            background-color: rgb(235, 115, 3);
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
         }

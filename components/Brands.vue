@@ -82,7 +82,7 @@ export default {
             &_btn {
                 border: 1px solid rgba(0, 0, 0, 0.25);
                 background-color: white;
-                font-size: 22px;
+                font-size: 18px;
                 border-radius: 5px;
                 padding: 10px;
                 transition: 0.2s;
@@ -96,9 +96,4 @@ export default {
         }
     }
 
-    /* @media screen and (max-width: 600px) { 
-        .container_brand  {
-            display: none;
-        }
-    } */
 </style>

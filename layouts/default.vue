@@ -10,13 +10,15 @@ import Navbar from '@/components/Navbar.vue';
 import Brands from '@/components/Brands.vue';
 import Container from '@/components/Container.vue';
 import Cart from '@/components/Cart.vue';
+import Button from '@/components/Button.vue';
 
 export default {
     components: {
         "Navbar": Navbar,
         "Brands": Brands,
         "Container": Container,
-        "Cart": Cart
+        "Cart": Cart,
+        "Button": Button
     }
 }
 </script>
