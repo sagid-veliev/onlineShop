@@ -6,10 +6,10 @@
                 <h3>All Brands</h3>
             </div>
             <div class="container_brand_items">
-                <div @click="selectBrand(brand.title)" v-for="(brand, index) in BRANDS" :key="index" class="container_brand_items__item">{{brand.title}}</div>
+                <button @click="selectBrand(brand.title)" v-for="(brand, index) in BRANDS" :key="index" class="container_brand_items__item">{{brand.title}}</button>
             </div>
             <div class="container_brand_button">
-                <div @click="resetBrand(null)" class="container_brand_button_btn">Reset</div>
+                <button @click="resetBrand(null)" class="container_brand_button_btn">Reset</button>
             </div>
         </div>
     </div>
@@ -18,6 +18,11 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+    data() {
+        return {
+            selectedBrand: ''
+        }
+    },
     async fetch() {
         await this.$store.dispatch("GET_BRANDS");
     },
@@ -26,6 +31,7 @@ export default {
     ]),
     methods: {
         selectBrand(brand) {
+            this.selectedBrand = brand;
             this.$emit('select', brand);
         },
         resetBrand(brand) {
@@ -56,6 +62,8 @@ export default {
             &__item {
                 display: $flex;
                 padding: 10px 0;
+                border: none;
+                background-color: white;
                 font-size: 18px;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.25);
                 &:hover {
@@ -73,6 +81,7 @@ export default {
             margin: 15px;
             &_btn {
                 border: 1px solid rgba(0, 0, 0, 0.25);
+                background-color: white;
                 font-size: 22px;
                 border-radius: 5px;
                 padding: 10px;
@@ -86,4 +95,10 @@ export default {
             }
         }
     }
+
+    /* @media screen and (max-width: 600px) { 
+        .container_brand  {
+            display: none;
+        }
+    } */
 </style>

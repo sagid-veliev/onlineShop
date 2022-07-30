@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <Brands @select="selectBrand" @reset="resetBrands" class="content_filter" />
-    <Container>
+    <Container :selected-brand="selectedBrand">
       <template v-slot:products>
         <Cart 
             v-for="(product, index) in filteredProducts"
@@ -22,7 +22,8 @@ export default {
     name: "IndexPage",
       data() {
       return {
-        sortedProducts: []
+        sortedProducts: [],
+        selectedBrand: ""
       }
     },
     async fetch() {
@@ -33,7 +34,7 @@ export default {
         "PRODUCTS"  
       ]),
       filteredProducts() {
-        if(!this.sortedProducts.length) {
+        if (!this.sortedProducts.length) {
           return this.PRODUCTS;
         }
         return this.sortedProducts;
@@ -42,10 +43,12 @@ export default {
     methods: {
       selectBrand(brand) {
         this.sortedProducts = [];
+        this.selectedBrand = brand;
         this.sortedProducts = this.PRODUCTS.filter(item => item.brand === brand);
         return this.sortedProducts;
       },
       resetBrands(brand) {
+        this.selectedBrand = brand;
         this.selectBrand(brand);
       }
     }
