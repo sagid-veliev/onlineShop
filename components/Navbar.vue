@@ -9,6 +9,7 @@
                     />
                 </div>
                 <div class="navbar_basket">
+                    <div v-if="quantity" class="navbar_basket_quantity">{{quantity}}</div>
                     <nuxt-img
                         alt="Basket"
                         src="~/assets/images/basket.png"
@@ -20,7 +21,9 @@
 </template>
 <script>
 export default {
-
+    props: {
+        quantity: Number
+    }
 }
 </script>
 
@@ -31,7 +34,6 @@ export default {
         width: 100%;
         border-radius: 5px;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
         &_wrap {
             display: flex;
             width: 95%;
@@ -41,11 +43,29 @@ export default {
             margin: auto;
         }
         &_basket {
-            opacity: 0.7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            & img {
+                margin-left: 5px;
+                opacity: 0.7;
+                &:hover {
+                    opacity: 1;
+                } 
+            }
             &:hover {
-                opacity: 1;
                 cursor: pointer;
             } 
+            &_quantity {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgb(235, 118, 3);
+                color: white;
+                border-radius: 50%;
+                min-width: 25px;
+                height: 25px;
+            }
         }
     }
 </style>

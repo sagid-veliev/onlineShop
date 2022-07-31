@@ -17,7 +17,7 @@
                 </div>
                 <div class="cart_description_wrap_price">
                     <p>{{ `${fixedPrice} ${currency}` }}</p>
-                    <button class="cart_description_wrap_price_btn">Buy</button>
+                    <button @click="addToBasket" class="cart_description_wrap_price_btn">Buy</button>
                 </div>
             </div>
         </div>
@@ -35,6 +35,11 @@ export default {
     computed: {
         fixedPrice() {
             return this.price.toFixed(2);
+        }
+    },
+    methods: {
+        addToBasket() {
+            this.$emit("add-to-basket");
         }
     }
 }

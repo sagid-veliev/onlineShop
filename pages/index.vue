@@ -1,18 +1,22 @@
 <template>
-  <div class="content">
-    <Brands @select="selectBrand" @reset="resetBrands" class="content_filter" />
-    <Container :selected-brand="selectedBrand">
-      <template v-slot:products>
-        <Cart 
-            v-for="(product, index) in filteredProducts"
-            :key="index"
-            :name="product.title"
-            :brand="product.brand"
-            :price="product.regular_price.value"
-            :currency="product.regular_price.currency"
-        />
-      </template>
-    </Container>
+  <div>
+    <Navbar class="navbar_fixed" :quantity="quantity"/>
+    <div class="content">
+        <Brands @select="selectBrand" @reset="resetBrands" class="content_filter" />
+        <Container :selected-brand="selectedBrand">
+          <template v-slot:products>
+            <Cart 
+                v-for="(product, index) in filteredProducts"
+                :key="index"
+                :name="product.title"
+                :brand="product.brand"
+                :price="product.regular_price.value"
+                :currency="product.regular_price.currency"
+                @add-to-basket="addToBasket(product)"
+            />
+          </template>
+        </Container>
+      </div>  
   </div>
 </template>
 
@@ -23,7 +27,8 @@ export default {
       data() {
       return {
         sortedProducts: [],
-        selectedBrand: ""
+        selectedBrand: "",
+        quantity: null
       }
     },
     async fetch() {
@@ -50,6 +55,10 @@ export default {
       resetBrands(brand) {
         this.selectedBrand = brand;
         this.selectBrand(brand);
+      },
+      addToBasket(product) {
+        this.quantity++;
+        console.log(product);
       }
     }
 }

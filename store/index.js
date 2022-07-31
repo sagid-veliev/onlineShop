@@ -7,7 +7,8 @@ Vue.use(Vuex);
 export default () => new Vuex.Store({
     state: {
         brands: [],
-        products: []
+        products: [],
+        selectedProducts: []
     },
     mutations: {
         SET_BRANDS: (state, brands) => {
