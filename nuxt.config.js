@@ -18,8 +18,12 @@ export default {
         href: "https://fonts.googleapis.com/css2?family=Oxygen&display=swap"
       }
     ],
+    script: [
+      {
+        src: "scripts/script.js",
+      },
+    ],
   },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@assets/css/main.css'
