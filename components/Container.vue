@@ -23,7 +23,7 @@
         box-sizing: border-box;
         margin: -1%;
         flex-basis: 80%;
-        height: auto;
+        height: 100%;
         &_header {
             display: flex;
             flex-direction: row;

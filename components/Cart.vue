@@ -4,7 +4,7 @@
             <nuxt-img
                 class="cart_photo_image"
                 alt="Product image"
-                src="~/assets/images/1.png"
+                :src="`~/assets${path}`"
             />
         </div>
         <div class="cart_description">
@@ -15,6 +15,17 @@
                 <div class="cart_description_wrap_brand">
                     <p>{{ brand }}</p>
                 </div>
+                <template v-if="configurable">
+                    <div class="cart_description_wrap_brand">
+                        <p>{{ brand }}</p>
+                    </div>
+                    <div class="cart_description_wrap_brand">
+                        <p>{{ brand }}</p>
+                    </div>
+                    <div class="cart_description_wrap_brand">
+                        <p>{{ brand }}</p>
+                    </div>
+                </template>
                 <div class="cart_description_wrap_price">
                     <p>{{ `${fixedPrice} ${currency}` }}</p>
                     <button @click="addToBasket" class="cart_description_wrap_price_btn">Buy</button>
@@ -30,7 +41,8 @@ export default {
         brand: String,
         price: Number,
         currency: String,
-        path: String
+        path: String,
+        configurable: Array
     },
     computed: {
         fixedPrice() {
@@ -45,16 +57,18 @@ export default {
 }
 </script>
 <style lang="postcss">
+
     .cart {
         display: flex;
         flex-direction: column;
         width: 23%;
         min-height: 350px;
-        border-radius: 5px 5px 5px 5px;
+        overflow: hidden;
         margin: 1%;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0,0,0,0.22);
+        border-radius: 5px;
         &_photo {
-            height: 100%;
+            height: 250px;
             position: relative;
             overflow: hidden;
             &_image {
@@ -69,8 +83,79 @@ export default {
             }
         }
         &_description {
+            flex-grow: 1;
             background-color: rgb(248, 248, 248);
-            height: 30%;
+            border-radius: 0 0 5px 5px;
+            padding: 10px;
+            &_wrap {
+                display: flex;
+                flex-direction: column;
+                flex: 0.95;
+                height: 100%;
+                padding: -10px;
+                &_name {
+                    flex-basis: 20%;
+                    display: flex;
+                    font-weight: 700;
+                    & p:hover {
+                        color: rgb(235, 115, 3);
+                    }
+                }
+                &_brand {
+                    flex-basis: 20%;
+                    opacity: 0.7;
+                }
+                &_price {
+                    flex-grow: 1;
+                    display:flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    font-weight: bold;
+                    font-size: 22px;
+                    color: rgb(235, 115, 3);
+                    &_btn {
+                        border: rgb(235, 115, 3);
+                        background-color: rgb(248, 129, 18);
+                        font-size: 16px;
+                        border-radius: 5px;
+                        padding: 5px 10px;
+                        color: white;
+                        &:hover {
+                            background-color: rgb(235, 115, 3);
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* .cart {
+        display: flex;
+        flex-direction: column;
+        width: 23%;
+        border-radius: 5px;
+        margin: 1%;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0,0,0,0.22);
+        &_photo {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            &_image {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                max-width: 100%;
+                max-height: 100%;
+                margin: auto;
+            }
+        }
+        &_description {
+            flex-grow: 1;
+            background-color: rgb(248, 248, 248);
+            border-radius: 0 0 5px 5px;
             &_wrap {
                 margin: 10px;
                 &_name {
@@ -88,7 +173,7 @@ export default {
                 &_price {
                     display:flex;
                     justify-content: space-between;
-                    align-items: center;
+                    align-items: flex-end;
                     min-height: 25%;
                     font-weight: bold;
                     font-size: 22px;
@@ -109,7 +194,7 @@ export default {
                 }
             }
         }
-    }
+    } */
 
     @media screen and (max-width: 1280px) { 
         .cart {

@@ -12,6 +12,8 @@
                 :brand="product.brand"
                 :price="product.regular_price.value"
                 :currency="product.regular_price.currency"
+                :configurable="product.configurable_options"
+                :path="product.image"
                 @add-to-basket="addToBasket(product)"
             />
           </template>

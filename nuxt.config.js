@@ -24,6 +24,9 @@ export default {
       },
     ],
   },
+  static: {
+    prefix: false
+  },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@assets/css/main.css'
@@ -35,7 +38,7 @@ export default {
       lg: 1024,
       xl: 1280,
       xxl: 1536
-    },
+    }
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
