@@ -5,6 +5,7 @@
                 class="cart_photo_image"
                 alt="Product image"
                 :src="`~/assets${path}`"
+                loading="lazy"
             />
         </div>
         <div class="cart_description">
@@ -16,15 +17,25 @@
                     <p>{{ brand }}</p>
                 </div>
                 <template v-if="configurable">
-                    <div class="cart_description_wrap_brand">
-                        <p>{{ brand }}</p>
+                    <div class="cart_description_wrap_color">
+                        <div class="cart_description_wrap_color_label-color">Color:</div>
+                        <div class="cart_description_wrap_color_colors">                     
+                            <div class="cart_description_wrap_color_colors_single-color">
+                                as
+                            </div>
+                            <div class="cart_description_wrap_color_colors_single-color">
+                                d
+                            </div>
+                            <div class="cart_description_wrap_color_colors_single-color">
+                               sa 
+                            </div>
+                        </div>
                     </div>
-                    <div class="cart_description_wrap_brand">
-                        <p>{{ brand }}</p>
+                    <div class="cart_description_wrap_size">
+                        <div class="cart_description_wrap_size_label-size">Size:</div>
+                        <div class="cart_description_wrap_size_sizes"></div>
                     </div>
-                    <div class="cart_description_wrap_brand">
-                        <p>{{ brand }}</p>
-                    </div>
+                    
                 </template>
                 <div class="cart_description_wrap_price">
                     <p>{{ `${fixedPrice} ${currency}` }}</p>
@@ -104,6 +115,41 @@ export default {
                 &_brand {
                     flex-basis: 20%;
                     opacity: 0.7;
+                }
+                &_color {
+                    display: flex;
+                    flex-direction: row;
+                    border: 1px solid red;
+                    min-height: 30px;
+                    height: 100%;
+                    &_label-color {
+                        display: flex;
+                        flex-basis: 20%;
+                        align-items: center;
+                    }
+                    &_colors{
+                        flex-basis: 80%;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        &_single-color {
+                            display: flex;
+                            flex-direction: row;
+                            flex-basis: 25%;
+                            margin: 1px;
+                            border:1px solid blue;
+                        }
+                    }
+                }
+                &_size {
+                    display: flex;
+                    flex-direction: row;
+                    border: 1px solid blue;
+                    &_label-size {
+                        flex-basis: 20%;
+                        background-color: green;
+                    }
                 }
                 &_price {
                     flex-grow: 1;
