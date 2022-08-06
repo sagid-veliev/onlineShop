@@ -18,26 +18,24 @@
                 </div>
                 <template v-if="configurable">
                     <div class="cart_description_wrap_color">
-                        <div class="cart_description_wrap_color_label-color">Color:</div>
                         <div class="cart_description_wrap_color_colors">                     
-                            <div v-for="(color, index) in availableColors.values" class="cart_description_wrap_color_colors_single-color">
+                            <button v-for="(color, index) in availableColors.values" class="cart_description_wrap_color_colors_single-color">
                                 <nuxt-img
                                     class="cart_description_wrap_color_colors_single-color_image"
                                     :alt="`${color.label}`"
                                     :src="`~/assets/images/conf/${color.label.toLowerCase()}.png`"
                                     loading="lazy"
                                 />
-                            </div>
+                            </button>
                         </div>
                     </div>
                     <div class="cart_description_wrap_size">
-                        <div class="cart_description_wrap_size_label-size">Size:</div>
                         <div class="cart_description_wrap_size_sizes">
-                            <div v-for="(size, index) in availableSizes.values" class="cart_description_wrap_size_sizes_single-size">
+                            <button v-for="(size, index) in availableSizes.values" class="cart_description_wrap_size_sizes_single-size">
                                 <div class="cart_description_wrap_size_sizes_single-size_size">
                                     {{size.label}}
                                 </div>
-                            </div>
+                            </button>
                         </div>
                     </div>
                     
@@ -115,44 +113,39 @@ export default {
                 height: 100%;
                 padding: -10px;
                 &_name {
-                    flex-basis: 20%;
-                    display: flex;
                     font-weight: 700;
                     & p:hover {
                         color: rgb(235, 115, 3);
                     }
                 }
                 &_brand {
-                    flex-basis: 20%;
                     opacity: 0.7;
                 }
                 &_color {
-                    display: flex;
                     flex-basis: 20%;
-                    flex-direction: row;
                     box-sizing: border-box;
-                    min-height: 50px;
-                    height: 100%;
-                    &_label-color {
-                        display: flex;
-                        flex-basis: 20%;
-                        align-items: center;
-                    }
                     &_colors {
-                        flex-basis: 80%;
                         display: flex;
                         flex-direction: row;
-                        justify-content: flex-end;
                         flex-wrap: wrap;
+                        flex-basis: 100%;
                         &_single-color {
+                            background-color: rgba(235, 235, 235);
                             position: relative;
-                            flex-basis: 25%;
+                            flex-basis: 19%;
+                            border-radius: 5px;
                             height: 45px;
                             overflow: hidden;
                             margin: 1px;
+                            border: 2px solid rgba(235, 115, 3, 0);
+                            &:hover {
+                                border: 2px solid rgba(235, 115, 3);
+                                cursor: pointer;
+                            }
+                            &:focus {
+                                border: 2px solid rgba(235, 115, 3);
+                            }
                             &_image {
-                                background-color: rgba(235, 235, 235);
-                                border-radius: 5px;
                                 position: absolute;
                                 top: 0;
                                 bottom: 0;
@@ -161,43 +154,39 @@ export default {
                                 max-width: 100%;
                                 max-height: 100%;
                                 margin: auto;
-                                &:hover {
-                                    background-color: rgba(235, 115, 3, 0.5);
-                                }
                             }
                         }
                     }
                 }
-                 &_size {
-                    display: flex;
+                
+                &_size {
                     flex-basis: 20%;
-                    flex-direction: row;
                     box-sizing: border-box;
-                    min-height: 50px;
-                    height: 100%;
-                    &_label-size {
-                        display: flex;
-                        flex-basis: 20%;
-                        align-items: center;
-                    }
                     &_sizes {
-                        flex-basis: 80%;
+                        flex-basis: 100%;
                         display: flex;
                         flex-direction: row;
-                        justify-content: flex-end;
                         flex-wrap: wrap;
                         &_single-size {
                             background-color: rgba(235, 235, 235);
                             position: relative;
-                            flex-basis: 25%;
-                            height: 45px;
+                            flex-basis: 19%;
+                            border-radius: 5px;
+                            height: 30px;
                             overflow: hidden;
                             margin: 1px;
-                            border-radius: 5px;
+                            border: 2px solid rgba(235, 115, 3, 0);
+                            &:hover {
+                                border: 2px solid rgb(235, 115, 3);
+                                cursor: pointer;
+                            }
+                            &:focus {
+                                border: 2px solid rgb(235, 115, 3);
+                            }
                             &_size {
                                 display: flex;
-                                justify-content: center;
                                 align-items: center;
+                                justify-content: center;
                                 position: absolute;
                                 top: 0;
                                 bottom: 0;
@@ -206,10 +195,6 @@ export default {
                                 max-width: 100%;
                                 max-height: 100%;
                                 margin: auto;
-                                &:hover {
-                                    background-color: rgb(235, 115, 3);
-                                    color: white;
-                                }
                             }
                         }
                     }

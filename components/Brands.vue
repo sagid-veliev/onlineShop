@@ -71,6 +71,11 @@ export default {
                     color: rgb(248, 129, 18);
                     cursor: pointer;
                 }
+                &:focus {
+                    background-color: rgb(250, 250, 250);
+                    color: rgb(248, 129, 18);
+                    cursor: pointer;
+                }
             }
         }
         &_button {
