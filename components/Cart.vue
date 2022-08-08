@@ -4,7 +4,7 @@
             <nuxt-img
                 class="cart_photo_image"
                 alt="Product image"
-                :src="`~/assets${path}`"
+                :src="`~/assets${pathMutating}`"
                 loading="lazy"
             />
         </div>
@@ -19,7 +19,7 @@
                 <template v-if="configurable">
                     <div class="cart_description_wrap_color">
                         <div class="cart_description_wrap_color_colors">                     
-                            <button v-for="(color, index) in availableColors.values" class="cart_description_wrap_color_colors_single-color">
+                            <button @click="selectColor(color)" v-for="(color, index) in availableColors.values" :key="index" class="cart_description_wrap_color_colors_single-color">
                                 <nuxt-img
                                     class="cart_description_wrap_color_colors_single-color_image"
                                     :alt="`${color.label}`"
@@ -31,7 +31,7 @@
                     </div>
                     <div class="cart_description_wrap_size">
                         <div class="cart_description_wrap_size_sizes">
-                            <button v-for="(size, index) in availableSizes.values" class="cart_description_wrap_size_sizes_single-size">
+                            <button v-for="(size, index) in availableSizes.values" :key="index"  class="cart_description_wrap_size_sizes_single-size">
                                 <div class="cart_description_wrap_size_sizes_single-size_size">
                                     {{size.label}}
                                 </div>
@@ -58,6 +58,11 @@ export default {
         path: String,
         configurable: Array
     },
+    data() {
+        return {
+            pathMutating: this.path
+        }
+    },
     computed: {
         fixedPrice() {
             return this.price.toFixed(2);
@@ -72,6 +77,9 @@ export default {
     methods: {
         addToBasket() {
             this.$emit("add-to-basket");
+        },
+        selectColor(color) {
+            this.pathMutating = "/images/conf/" + color.label.toLowerCase() + '.png';
         }
     }
 }
@@ -109,9 +117,7 @@ export default {
             &_wrap {
                 display: flex;
                 flex-direction: column;
-                flex-basis: 95%;
                 height: 100%;
-                padding: -10px;
                 &_name {
                     font-weight: 700;
                     & p:hover {
@@ -122,7 +128,6 @@ export default {
                     opacity: 0.7;
                 }
                 &_color {
-                    flex-basis: 20%;
                     box-sizing: border-box;
                     &_colors {
                         display: flex;
@@ -142,9 +147,6 @@ export default {
                                 border: 2px solid rgba(235, 115, 3);
                                 cursor: pointer;
                             }
-                            &:focus {
-                                border: 2px solid rgba(235, 115, 3);
-                            }
                             &_image {
                                 position: absolute;
                                 top: 0;
@@ -158,9 +160,7 @@ export default {
                         }
                     }
                 }
-                
                 &_size {
-                    flex-basis: 20%;
                     box-sizing: border-box;
                     &_sizes {
                         flex-basis: 100%;
@@ -179,9 +179,6 @@ export default {
                             &:hover {
                                 border: 2px solid rgb(235, 115, 3);
                                 cursor: pointer;
-                            }
-                            &:focus {
-                                border: 2px solid rgb(235, 115, 3);
                             }
                             &_size {
                                 display: flex;
