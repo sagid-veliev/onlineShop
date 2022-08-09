@@ -8,7 +8,7 @@
         @reset="resetBrands"
       />
       <Container :selected-brand="selectedBrand">
-        <template v-slot:products>
+        <template #products>
           <Cart
             v-for="(product, index) in filteredProducts"
             :key="index"

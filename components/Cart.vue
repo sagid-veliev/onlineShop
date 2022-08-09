@@ -19,7 +19,7 @@
                 <template v-if="configurable">
                     <div class="cart_description_wrap_color">
                         <div class="cart_description_wrap_color_colors">                     
-                            <button @click="selectColor(color)" v-for="(color, index) in availableColors.values" :key="index" class="cart_description_wrap_color_colors_single-color">
+                            <button @click="selectColor(color.label.toLowerCase())" v-for="(color, index) in availableColors.values" :key="index" class="cart_description_wrap_color_colors_single-color">
                                 <nuxt-img
                                     class="cart_description_wrap_color_colors_single-color_image"
                                     :alt="`${color.label}`"
@@ -31,7 +31,7 @@
                     </div>
                     <div class="cart_description_wrap_size">
                         <div class="cart_description_wrap_size_sizes">
-                            <button v-for="(size, index) in availableSizes.values" :key="index"  class="cart_description_wrap_size_sizes_single-size">
+                            <button @click="selectSize($event)" v-for="(size, index) in availableSizes.values" :key="index"  class="cart_description_wrap_size_sizes_single-size">
                                 <div class="cart_description_wrap_size_sizes_single-size_size">
                                     {{size.label}}
                                 </div>
@@ -79,7 +79,14 @@ export default {
             this.$emit("add-to-basket");
         },
         selectColor(color) {
-            this.pathMutating = "/images/conf/" + color.label.toLowerCase() + '.png';
+            this.pathMutating = `/images/conf/${color}.png`;
+        },
+        selectSize(event) {
+            if (event.target.tagName === 'DIV') {
+                var el = document.querySelector('.cart_description_wrap_size_sizes_single-size_active')
+                el && el.classList.remove('cart_description_wrap_size_sizes_single-size_active')
+                event.target.classList.add('cart_description_wrap_size_sizes_single-size_active')
+            }
         }
     }
 }
@@ -176,6 +183,9 @@ export default {
                             overflow: hidden;
                             margin: 1px;
                             border: 2px solid rgba(235, 115, 3, 0);
+                            &_active {
+                                border: 2px solid rgb(235, 115, 3);
+                            }
                             &:hover {
                                 border: 2px solid rgb(235, 115, 3);
                                 cursor: pointer;
