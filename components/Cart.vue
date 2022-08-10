@@ -4,7 +4,7 @@
             <nuxt-img
                 class="cart_photo_image"
                 alt="Product image"
-                :src="`~/assets${pathMutating}`"
+                :src="`~/assets${path}`"
                 loading="lazy"
             />
         </div>
@@ -19,7 +19,7 @@
                 <template v-if="configurable">
                     <div class="cart_description_wrap_color">
                         <div class="cart_description_wrap_color_colors">                     
-                            <button @click="selectColor(color.label.toLowerCase())" v-for="(color, index) in availableColors.values" :key="index" class="cart_description_wrap_color_colors_single-color">
+                            <button @click="selectColor(color)" v-for="(color, index) in availableColors.values" :key="index" class="cart_description_wrap_color_colors_single-color">
                                 <nuxt-img
                                     class="cart_description_wrap_color_colors_single-color_image"
                                     :alt="`${color.label}`"
@@ -49,6 +49,8 @@
     </div>
 </template>
 <script>
+import { throws } from 'assert';
+
 export default {
     props: {
         name: String,
@@ -57,11 +59,6 @@ export default {
         currency: String,
         path: String,
         configurable: Array
-    },
-    data() {
-        return {
-            pathMutating: this.path
-        }
     },
     computed: {
         fixedPrice() {
@@ -78,15 +75,13 @@ export default {
         addToBasket() {
             this.$emit("add-to-basket");
         },
-        selectColor(color) {
-            this.pathMutating = `/images/conf/${color}.png`;
+        selectColor(color, index) {
+            this.$emit('select-color', color);
         },
         selectSize(event) {
-            if (event.target.tagName === 'DIV') {
-                var el = document.querySelector('.cart_description_wrap_size_sizes_single-size_active')
-                el && el.classList.remove('cart_description_wrap_size_sizes_single-size_active')
-                event.target.classList.add('cart_description_wrap_size_sizes_single-size_active')
-            }
+            var el = document.querySelector('.cart_description_wrap_size_sizes_single-size_active')
+            el && el.classList.remove('cart_description_wrap_size_sizes_single-size_active')
+            event.currentTarget.classList.add('cart_description_wrap_size_sizes_single-size_active')
         }
     }
 }

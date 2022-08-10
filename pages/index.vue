@@ -18,7 +18,9 @@
             :currency="product.regular_price.currency"
             :configurable="product.configurable_options"
             :path="product.image"
-            @add-to-basket="addToBasket(product)"
+            :configurable-color="selectedColor"
+            @add-to-basket="addToBasket"
+            @select-color="(color) => selectColor(color, index)"
           />
         </template>
       </Container>
@@ -35,6 +37,7 @@ export default {
       sortedProducts: [],
       selectedBrand: "",
       quantity: null,
+      selectedColor: ""
     };
   },
   async fetch() {
@@ -62,9 +65,11 @@ export default {
       this.selectedBrand = brand;
       this.selectBrand(brand);
     },
+    selectColor(color, index) {
+        this.PRODUCTS[index].image = `/images/conf/${color.label.toLowerCase()}.png`;
+    },
     addToBasket(product) {
       this.quantity++;
-      console.log(product);
     },
   },
 };
